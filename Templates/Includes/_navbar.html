@@ -1,0 +1,70 @@
+<header>
+        <!-- Header Start -->
+       <div class="header-area header_area header-transparent">
+            <div class="main-header">
+               <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-1 col-md-1">
+                                <div class="logo">
+                                  <a href="/"><img src="{{ url_for('static',filename='img/logo/logo.png') }}" alt=""></a>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8">
+                                <!-- Main-menu -->
+                                <div class="main-menu f-right d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            {% if session['logged_in'] == 1 %}
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="/pricing">Pricing</a></li>
+                                            <li><a href="/show">Projects</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+                                    <a href="/logout" class="btn header-btn">Logout</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if session['logged_in'] == 2 %}
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="/pricing">Pricing</a></li>
+                                            <li><a href="/clientprojects">Client Projects</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+                                    <a href="/logout" class="btn header-btn">Logout</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if not session['logged_in'] == 1 %}
+                            <li><a href="/">Home</a></li>
+                                            <li><a href="/pricing">Pricing</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-2 col-lg-3 col-md-3">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+                                    <a href="/login" class="btn header-btn">Login / Register</a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+       </div>
+        <!-- Header End -->
+    </header>

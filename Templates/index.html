@@ -1,0 +1,270 @@
+   {% extends "base.html" %}
+   {% block title %}ProjSync - Home{% endblock %}
+    {% block content %}
+    <main>
+
+
+        <!-- slider Area Start-->
+        <div class="slider-area  slider-height" data-background="{{ url_for('static',filename='img/hero/h1_hero.jpg') }}">
+            <div class="slider-active">
+                <!-- Single Slider -->
+                <div class="single-slider">
+                    <div class="slider-cap-wrapper">
+                          <div class="hero__img">
+                            <img src="{{ url_for('static',filename='img/hero/hero_img.jpg') }}" alt=""  data-animation="fadeInRight" data-transition-duration="5s">
+                          </div>
+                          <div class="hero__caption">
+                              <h1 data-animation="fadeInLeft" data-delay=".4s">Connecting experts with <br>Aspiring Creators</h1>
+                              <p data-animation="fadeInLeft" data-delay=".6s">Have a personal project or idea in mind? ProjSync is here to bring connect you with other experts in the field to ensure smooth sailing.</p>
+                              <!-- Hero Btn -->
+                              <a href="/projects" class="hero-btn"  data-animation="fadeInLeft" data-delay=".9s" >
+                                  View our public project library
+                                  <!-- Arrow SVG icon -->
+                                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                  viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                 <path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068
+                                         c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557
+                                         l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104
+                                         c0.006-0.006,0.011-0.013,0.018-0.019C513.968,262.339,513.943,249.635,506.134,241.843z"/> </svg>
+                             </a>
+                          </div>
+                    </div>
+                </div>
+                <!-- Single Slider -->
+                <div class="single-slider">
+                    <div class="slider-cap-wrapper">
+                          <div class="hero__img">
+                            <img src="{{ url_for('static',filename='img/hero/hero_img2.jpg') }}" alt=""  data-animation="fadeInRight" data-transition-duration="5s">
+                          </div>
+                          <div class="hero__caption">
+                              <h1 data-animation="fadeInLeft" data-delay=".4s">We're always hiring <br>experts in all fields</h1>
+                              <p data-animation="fadeInLeft" data-delay=".6s">Are you an expert? The nature of our business model allows for many job vacancies, join our team today!</p>
+                              <!-- Hero Btn -->
+                              <a href="#" class="hero-btn"  data-animation="fadeInLeft" data-delay=".9s" >
+                                  View career opportunities
+                                  <!-- Arrow SVG icon -->
+                                  <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                  viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                                 <path d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068
+                                         c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557
+                                         l-70.162,69.824c-7.829,7.792-7.859,20.455-0.067,28.284c7.793,7.831,20.457,7.858,28.285,0.068l104.504-104
+                                         c0.006-0.006,0.011-0.013,0.018-0.019C513.968,262.339,513.943,249.635,506.134,241.843z"/> </svg>
+                             </a>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- slider Area End-->
+        <!-- Want To Work Start -->
+        <div class="wantToWork-area w-padding">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="wantToWork-caption">
+                            <p>Once you’ve settled on a project</p>
+                            <h2>High Performance Services For Multiple Industries.</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-5 col-md-4">
+                       <div class="wantToWork-btn f-right">
+                            <a href="#" class="btn btn-ans">view more</a>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Want To Work End -->
+        <!-- Our Services Start -->
+        <div class="our-services  pt-50 pb-150">
+            <div class="container">
+                <div class="row">
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-experience"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Personal Strategic Planning</h5>
+                                <p>We offer free templates to help you better understand your project timeline.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-pay"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Free of Charge</h5>
+                                <p>All web services are free of charge till expert help is requested.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services text-center mb-30">
+                            <div class="services-ion">
+                                <span class="flaticon-good"></span>
+                            </div>
+                            <div class="services-cap">
+                                <h5>Satisfaction Guaranteed</h5>
+                                <p>If you've chosen to work with on of our experts, you are backed by a 30-day moneyback guarantee.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Our Services End -->
+        <!-- Visit Our Tailor Start -->
+        <!-- Visit Our Tailor End -->
+        <!-- Want To Work Start -->
+        <!-- Want To Work End -->
+        <!-- Project Gallery Start -->
+        <!-- Project Gallery End -->
+        <!-- Testimonial Start -->
+        <div class="testimonial-area testimonial-padding">
+            <div class="container ">
+               <div class="row d-flex justify-content-center">
+                    <div class="col-xl-11 col-lg-11 col-md-9">
+                        <div class="h1-testimonial-active">
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial text-center">
+                                 <!-- Testimonial Content -->
+                                <div class="testimonial-caption ">
+                                    <div class="testimonial-top-cap">
+                                        <img src="{{ url_for('static',filename='img/icon/testimonial.png') }}" alt="">
+                                        <p>With the help of an expert I was able to elevate my personal skills and own a bakery</p>
+                                    </div>
+                                    <!-- founder -->
+                                    <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                        <div class="founder-img">
+                                            <img src="{{ url_for('static',filename='img/testmonial/Homepage_testi.png') }}" alt="">
+                                        </div>
+                                       <div class="founder-text">
+                                            <span>Richard Pine</span>
+                                            <p>Bakery owner</p>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Testimonial -->
+                            <div class="single-testimonial text-center">
+                                 <!-- Testimonial Content -->
+                                <div class="testimonial-caption ">
+                                    <div class="testimonial-top-cap">
+                                        <img src="{{ url_for('static',filename='img/icon/testimonial.png') }}" alt="">
+                                        <p>ProjSync helped me realize my vision into a business and better align my goals with the industry with the help of top tier experts</p>
+                                    </div>
+                                    <!-- founder -->
+                                    <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                        <div class="founder-img">
+                                            <img src="{{ url_for('static',filename='img/testmonial/Homepage_testi.png') }}" alt="">
+                                        </div>
+                                       <div class="founder-text">
+                                            <span>Oliva jems</span>
+                                            <p>Architectural designer</p>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Testimonial End -->
+        <!--All startups Start -->
+        <!--All startups End -->
+        <!-- Want To Work Start -->
+        <!-- Want To Work End -->
+        <!-- David Droga start -->
+        <!-- David Droga End -->
+        <!-- Want To Work Start -->
+        <!-- Want To Work End -->
+
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="../assets/img/logo/logo2_footer.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Services</h4>
+                                    <ul>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#"> SEO Service</a></li>
+                                        <li><a href="#">Digital market</a></li>
+                                        <li><a href="#">Content create</a></li>
+                                        <li><a href="#">Find Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Customer Care</h4>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">News & Articles</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#"> Terms of Use</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4><span>+564</span> 7885 3222</h4>
+                                    <ul>
+                                        <li><a href="#">support@projsync.com</a></li>
+                                    </ul>
+                                    <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                                </div>
+                                <!-- footer social -->
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+{% endblock %}

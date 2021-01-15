@@ -1,0 +1,13 @@
+google-api-python-client
+google_auth_oauthlib
+schedule
+mysql-connector-python
+pycryptodome
+scipy
+flask
+flask_sqlalchemy
+flask_limiter
+wtforms
+email_validator
+flask_login
+passlib

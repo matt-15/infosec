@@ -1,0 +1,63 @@
+  {% extends "baselogin.html" %}
+  {% block title %}ProjSync - Register {% endblock %}
+  {% block content %}
+  {% from "includes/_formhelper.html" import render_field %}
+  	<div class="limiter">
+		<a href="/">Back</a>
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form class="login100-form validate-form" method="POST" action="/register">
+					<span class="login100-form-title p-b-34">
+						Account Signup
+					</span>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Enter a valid username">
+						{{ render_field(form.name, class="input101", placeholder="Username")  }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Enter a valid email">
+						{{ render_field(form.email, class="input101", placeholder="Email")  }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Password cannot be blank">
+						{{ render_field(form.password, class="input101")  }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Credit Card cannot be blank and be whithin 14-16 chara">
+						{{ render_field(form.cc, class="input101")  }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate=" cannot be blank">
+						{{ render_field(form.num, class="input101")  }}
+						<span class="focus-input100"></span>
+					</div>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" id="signupbtn">
+							Sign up
+						</button>
+					</div>
+
+					<div class="w-full text-center p-t-27 p-b-239">
+						<span class="txt1">
+							Forgot your
+						</span>
+
+						<a href="#" class="txt2">
+							Email / Password?
+						</a>
+					</div>
+
+					<div class="w-full text-center">
+						<a href="/login" class="txt3">
+							Log In
+						</a>
+					</div>
+				</form>
+
+                  <img src="{{ url_for('static',filename='img/bg-01.jpg') }}" class="login100-more" id="signpis">
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+{% endblock %}

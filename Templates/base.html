@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.ico">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/owl.carousel.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/slicknav.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/flaticon.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/magnific-popup.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/fontawesome-all.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/themify-icons.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/slick.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/nice-select.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static',filename='styles/pricing.css') }}">
+   </head>
+
+   <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{{ url_for('static',filename='img/logo/loder.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+   <div class="site-wrap">
+       {% block navbar %}
+       {% include 'Includes/_navbar.html' %}
+       {% endblock %}
+       {% block content %}
+
+       {% endblock %}
+   </div>
+    {% block scripts %}
+        <!-- JS here -->
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{{ url_for('static',filename='js/vendor/modernizr-3.5.0.min.js') }}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{{ url_for('static',filename='js/vendor/jquery-1.12.4.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/popper.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{{ url_for('static',filename='js/jquery.slicknav.min.js') }}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Plugins -->
+        <script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/slick.min.js') }}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{{ url_for('static',filename='js/wow.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='js/animated.headline.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.magnific-popup.js') }}"></script>
+
+		<!-- Nice-select, sticky -->
+        <script src="{{ url_for('static',filename='js/jquery.nice-select.min.js') }}"></script>
+		<script src="{{ url_for('static',filename='js/jquery.sticky.js') }}"></script>
+
+        <!-- contact js -->
+        <script src="{{ url_for('static',filename='js/contact.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.form.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.validate.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/mail-script.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/jquery.ajaxchimp.min.js') }}"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{{ url_for('static',filename='js/plugins.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/main.js') }}"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function () {
+                $('#dataTable').DataTable();
+            });
+        </script>
+   {% endblock %}
+</body>
+</html>
