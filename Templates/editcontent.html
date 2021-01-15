@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}ProjSync - New Project Creation Wizard{% endblock %}
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+<!-- Hero Area Start -->
+<div class="hero-area hero-height2 d-flex align-items-center" data-background="{{ url_for('static',filename='img/hero/h2_hero.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2 id="tes">{{name}}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Area End -->
+<form method="POST" style="padding:5px;">
+    <a href="/projects" style="padding:5px;float:left;"></a>
+    <h1 class="display-4">Project</h1>
+    <div class="form-group">
+        {{ render_field(pForm.name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(pForm.field, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(pForm.description, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(pForm.content, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(pForm.view, class="form-control") }}
+    </div>
+    {{ pForm.pSubmit }}
+</form>
+<br>
+<form method="POST">
+    <div class="form-group">
+        {{ render_field(cForm.comment, class="form-control") }}
+    </div>
+    {{ cForm.cSubmit }}
+</form>
+{% for comment in comments %}
+<p>ID: {{comment.id}} project id {{comment.projectid}} by {{comment.owner}} {{comment.userid}} ({{comment.content}})</p>
+{% endfor %}
+{% endblock %}

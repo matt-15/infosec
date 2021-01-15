@@ -19,14 +19,6 @@
 ##  p1.join()
 ##  p2.join()
 ##
-##f = open("log/logCommits.txt", "r")
-##for x in f:
-##  que=
-r=0
-try:
-    while True:
-        r+=1
-        r+e
-except NameError:
-    pass
-print(r)
+f = open("logCommits.txt", "r")
+for x in f:
+  print(x)

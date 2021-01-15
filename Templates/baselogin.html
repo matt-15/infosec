@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/icomoon/icomoon.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/bootstrap/css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/loginfonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/loginfonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/loginutil.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/log/loginmain.css') }}?q=28123824">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!--===============================================================================================-->
+</head>
+<body>
+    <div class="container-fluid">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+ {% block scripts %}
+ <!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/log/vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static',filename='styles/log/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/log/vendor/select2/select2.min.js') }}"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/log/vendor/daterangepicker/moment.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='styles/log/vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='styles/log/vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='js/loginmain.js') }}"></script>
+ {% endblock %}
+
+</body>
+</html>

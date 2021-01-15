@@ -5,6 +5,7 @@ import datetime
 import threading
 import time
 from tkinter import ttk
+from tkinter.scrolledtext import ScrolledText
 import scipy
 from scipy import stats
 import statistics as st
@@ -27,11 +28,13 @@ from Crypto.Random import get_random_bytes
 
 SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
 
+
 global cryptokey
 cryptokey = b'W\xdf\xfb\x1dn\xc0\xd3\xe1\xce/\x08P\xe6P\rS\xe7\x07\xa6\xebyHwN,P\x0c\x08\x88\xd8\x9e\xda'
 file = 'Hotel.db'
 buffer_size = 65536
 
+FileIDnamelist = []
 def auth():
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is created automatically when the authorization flow completes for the first time.
@@ -63,10 +66,18 @@ def auth():
     else:
         print('Files:')
         for item in items:
+            fileDict = {}
+            fileDict[item['name']] = item['id']
+            FileIDnamelist.append(fileDict)
             print(u'{0} ({1})'.format(item['name'], item['id']))
 
 auth()
 
+FileNamelist = []
+
+for i in FileIDnamelist:
+    for key in i:
+        FileNamelist.append(key)
 
 window = Tk()
 window.title("Application")
@@ -124,9 +135,9 @@ def uploadFile():
     return file_id
 
 
-def dl_recover():
+def dl_recover(file_id, fileName):
     request = service.files().get_media(fileId=file_id)
-    fh = io.FileIO(filename, 'wb')
+    fh = io.FileIO(fileName, 'wb')
     downloader = MediaIoBaseDownload(fh, request)
     done = False
     while done is False:
@@ -163,6 +174,25 @@ def update():
 def backup_schedule():
     schedule.run_pending()
     threading.Timer(30, backup_schedule).start()
+
+def update_log():
+    l = open("log/logCommits.txt", "r")
+    for logs in l:
+        LOG.configure(state='normal')
+        LOG.insert(END, logs)
+        LOG.configure(state='disabled')
+        # Autoscroll to the bottom
+        LOG.yview(END)
+
+def dwnldbackup():
+    specbackVAR = specbackList.get()
+
+    for i in FileIDnamelist:
+        if specbackVAR in i:
+            file_ID = i[specbackVAR]
+            fileName = specbackVAR
+
+    dl_recover(file_ID, fileName)
 
 #=====================================================================================
 # === Encrypt ===
@@ -257,35 +287,49 @@ def encryptcheck():
     return count
 #=======================================================================================
 
-lbl = Label(window, text="Enter Database PATH")
-lbl.grid(column=0,row=0)
-PATH = Entry(window,width=20)
-PATH.grid(column=1,row=0)
+tab_parent = ttk.Notebook(window)
+tab1 = ttk.Frame(tab_parent)
+tab2 = ttk.Frame(tab_parent)
+tab_parent.add(tab1, text="Backup/Crypt")
+tab_parent.add(tab2, text="Logs")
+tab_parent.grid(column=0, row=0)
 
-lbl2 = Label(window, text="Enter backup time (13:00)")
-lbl2.grid(column=0,row=1)
-TIME1 = Entry(window,width=20)
-TIME1.grid(column=1,row=1)
-root=0
-lbl3 = Label(window, text="Enter backup days")
-lbl3.grid(column=0,row=2)
-FREQ = ChecklistCombobox(root,values=('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'))
-FREQ.grid(column=1,row=2)
+lbl = Label(tab1, text="Enter Database PATH")
+lbl.grid(column=0,row=1)
+PATH = Entry(tab1,width=20)
+PATH.grid(column=1,row=1)
 
-lbl4 = Label(window, text="Select IDS strictness")
-lbl4.grid(column=0,row=3)
-SEVList = StringVar(window)
+lbl2 = Label(tab1, text="Enter backup time (13:00)")
+lbl2.grid(column=0,row=2)
+TIME1 = Entry(tab1, width=20)
+TIME1.grid(column=1,row=2)
+
+lbl3 = Label(tab1, text="Enter backup days")
+lbl3.grid(column=0,row=3)
+FREQ = ChecklistCombobox(tab1, values=('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'))
+FREQ.grid(column=1,row=3)
+
+lbl4 = Label(tab1, text="Select IDS strictness")
+lbl4.grid(column=0,row=4)
+SEVList = StringVar(tab1)
 SEVList.set(OPTIONS[0])
-SEV = OptionMenu(window,SEVList, *OPTIONS)
-SEV.grid(column=1,row=3)
+SEV = OptionMenu(tab1, SEVList, *OPTIONS)
+SEV.grid(column=1,row=4)
 
-UpdateBTN = Button(window, text="Update", command=update)
-UpdateBTN.grid(column=1, row=4)
+UpdateBTN = Button(tab1, text="Update", command=update)
+UpdateBTN.grid(column=1, row=5)
 
-DBKBTN = Button(window, text="Download Backup", command=dl_recover)
-DBKBTN.grid(column=0, row=5)
-BKNBTN = Button(window, text="Backup Now", command=backup)
-BKNBTN.grid(column=1, row=5)
+DBKBTN = Button(tab1, text="Download Backup", command=dwnldbackup)
+DBKBTN.grid(column=0, row=7)
+lbl6 = Label(tab1, text="Select backup file")
+specbackList = StringVar(tab1)
+specbackList.set(FileNamelist[0])
+specback = OptionMenu(tab1, specbackList, *FileNamelist)
+specback.grid(column=0,row=6)
+
+BKNBTN = Button(tab1, text="Backup Now", command=backup)
+BKNBTN.grid( column=1, row=7)
+
 if encryptcheck() == 1:
     ENBTN = Button(window, text="Encrypt Database", command=encrypt, state=DISABLED)
     ENBTN.grid(column=2, row=5)
@@ -298,6 +342,15 @@ if encryptcheck() == 0:
 else:
     DNBTN = Button(window, text="Decrypt Database", command=decrypt)
     DNBTN.grid(column=3, row=5)
+
+lbl5 = Label(tab2, text="Log events:")
+lbl5.grid(column=0,row=0)
+LOG = ScrolledText(tab2,width=100,height=10)
+LOG.grid(column=0,row=1,columnspan=4)
+LOG.configure(state='disabled')
+RE = Button(tab2, text="Refresh", command=update_log)
+RE.grid(column=0, row=2)
+
 PATH.focus()
 window.mainloop()
 

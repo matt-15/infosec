@@ -58,7 +58,7 @@ class QueueHandler(logging.Handler):
 
     def emit(self, record):
         self.log_queue.put(record)
-        
+
 
 
 class ConsoleUi:
@@ -78,7 +78,7 @@ class ConsoleUi:
         # Create a logging handler using a queue
         self.log_queue = queue.Queue()
         self.queue_handler = QueueHandler(self.log_queue)
-        print("PRINTTTTT",self.queue_handler.log_queue.__dict__)
+        print("PRINTTTTT",self.queue_handler.__dict__)
         formatter = logging.Formatter('%(asctime)s: %(message)s')
         self.queue_handler.setFormatter(formatter)
         logger.addHandler(self.queue_handler)

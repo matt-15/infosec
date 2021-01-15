@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+}
+
+.ratings {
+  margin: 0 auto; /* Center website */
+  max-width: 1200px; /* Max width */
+  padding: 10px;
+}
+.row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -42px;
+}
+
+.onestar {
+    position: relative;
+    left: 5px;
+    top: -275px;
+    left: 23px
+}
+
+.twostar {
+    position: relative;
+    left: 3px;
+    top: -290px;
+    left: 21px
+}
+
+.threestar {
+    position: relative;
+    left: 2px;
+    top: -300px;
+    left: 20px
+}
+
+.fourstar {
+    position: relative;
+    left: 2px;
+    top: -313px;
+    left: 20px
+}
+
+.fivestar {
+    position: relative;
+    left: 3px;
+    top: -325px;
+    left: 20px
+}
+
+.heading {
+  font-size: 25px;
+  margin-right: 25px;
+}
+
+.fa {
+  font-size: 25px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top: 10px;
+}
+
+.middle {
+  float: left;
+  width: 70%;
+  margin-top: 10px;
+}
+
+/* Place text to the right */
+.right {
+  text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: #f1f1f1;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - make the columns stack on top of each other instead of next to each other */
+@media (max-width: 400px) {
+  .side, .middle {
+    width: 100%;
+  }
+  /* Hide the right column on small screens */
+  .right {
+    display: none;
+  }
+}
+
+#review {
+    padding-top: 60px;
+}
+
+/*---------------Comments Section-----------------*/
+.write-new{
+    min-height: 200px;
+    margin-left:-0px;
+    overflow-y: scroll; // vertical scroll bar
+    display: block;
+    position: relative;
+    text-align: center;
+}
+
+.block{
+    display: inline-block;
+    margin-left: 15%
+}
+
+.star-post {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+textarea {
+    width: 35%;
+    text-align: center;
+}
+
+/*---------------Star Section-----------------*/

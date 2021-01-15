@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+  {% block title %}ProjSync - Search{% endblock %}
+  {% block content %}
+  {% from "includes/_formhelper.html" import render_field %}
+        <div class="hero-area hero-height2 d-flex align-items-center" data-background="{{ url_for('static',filename='img/hero/h2_hero.jpg') }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center pt-50">
+                            <h2>Search</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <form action="/search">
+					<div data-validate="Field cannot be blank">
+						{{ render_field(form.name, class="input101", placeholder="Enter field/name here")  }}
+						<span></span>
+					</div>
+					<div>
+						<button id="signupbtn">
+							Search
+						</button>
+					</div>
+				</form>
+  {% endblock %}

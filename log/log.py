@@ -12,8 +12,8 @@ def dbInsert(db,table,mail, uname, pword, cc):
 def dbCommit(db,table):
     logging.info('action"Commit"; databse: "{0}"; table:"{1}"; message: "previous action has been commited to the database"'.format(db,table))
 
-def dbSelect(db,table):
-    logging.info('action"SELECT"; databse: "{0}"; table:"{1}"'.format(db,table))
+def dbSelect(db,table,rows):
+    logging.info('action"SELECT"; databse: "{0}"; table:"{1}"; rows: "{2}"'.format(db,table,rows))
 
 def login_report(ip):
     g.main(ip)

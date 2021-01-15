@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}ProjSync - Pricing{% endblock %}
+{% block content %}
+
+<h1 class="big-price-word"><strong>PRICE</strong></h1>
+<p class="extra-price-text">Your just a few steps away from a whole new world of experience</p>
+
+<div class="container">
+<div class="solo-banner">
+    <h2>Tryout "product"</h2>
+    <span class="mid-price-text"><strong class="free-price">FREE</strong> /4 DAYS</span>
+    <p>*No credit card required</p>
+    <a class="signup-butt" href="/pricing-pay">SIGN-UP NOW ></a>
+</div>
+
+<h2 id="choose-a-plan">Choose a Plan</h2>
+
+<div id="wrapper-price">
+<div id="left" class="normal-small-banner">
+    <h2>Monthly</h2>
+    <span class="mid-price-text">$<strong class="free-price">6.50</strong>/ Month</span>
+    <p>$<strong id="monthly-total-price">6.50</strong>/ <span class="inner-monthly-price">1</span> Month<span class="discount-monthly-percent"> 0%</span></p>
+    <a class="signup-butt" href="/pricing-pay">SIGN-UP NOW ></a>
+</div>
+
+<div id="mid" class="special-small-banner">
+    <span class="best-choice">Best Choice</span>
+    <h2>Semiannual</h2>
+    <span class="mid-price-text">$<strong class="free-price">5.83</strong>/ Month</span>
+    <p>$<strong id="semiannual-total-price">35.00</strong>/ <span class="inner-semiannual-price">6</span> Month<span class="discount-semiannual-percent"> -11%</span></p>
+    <a class="signup-butt" href="/pricing-pay">SIGN-UP NOW ></a>
+</div>
+
+<div id="right" class="normal-small-banner">
+    <h2>Quarterly</h2>
+    <span class="mid-price-text">$<strong class="free-price">6.15</strong>/ Month</span>
+    <p>$<strong id="quarterly-total-price">18.45</strong>/ <span class="inner-quarterly-price">3</span> Month<span class="discount-quarterly-percent"> -5%</span></p>
+    <a class="signup-butt" href="/pricing-pay">SIGN-UP NOW ></a>
+</div>
+</div>
+</div>
+<br><br><br>
+{% endblock %}
