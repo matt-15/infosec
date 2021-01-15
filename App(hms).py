@@ -90,7 +90,7 @@ def encrypt(file):
     countfile.write(str(count))
     countfile.close()
 #==================================================================
-decrypt("Hotel(new).db")
+decrypt("Hotel.db")
 
 ALPHABET = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 # Set the ALPHABET array (containing a space on position 0) and the OTP array to empty
@@ -209,7 +209,7 @@ conn = sqlite3.connect('Hotel.db')
 c = conn.cursor()
 
 def OnExitApp():  #encrypt function
-    encrypt("Hotel(new).db")
+    encrypt("Hotel.db")
 
 atexit.register(OnExitApp)
 

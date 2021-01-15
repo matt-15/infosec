@@ -331,16 +331,16 @@ BKNBTN = Button(tab1, text="Backup Now", command=backup)
 BKNBTN.grid( column=1, row=7)
 
 if encryptcheck() == 1:
-    ENBTN = Button(window, text="Encrypt Database", command=encrypt, state=DISABLED)
+    ENBTN = Button(tab1, text="Encrypt Database", command=encrypt, state=DISABLED)
     ENBTN.grid(column=2, row=5)
 else:
-    ENBTN = Button(window, text="Encrypt Database", command=encrypt)
+    ENBTN = Button(tab1, text="Encrypt Database", command=encrypt)
     ENBTN.grid(column=2, row=5)
 if encryptcheck() == 0:
-    DNBTN = Button(window, text="Decrypt Database", command=decrypt, state=DISABLED)
+    DNBTN = Button(tab1, text="Decrypt Database", command=decrypt, state=DISABLED)
     DNBTN.grid(column=3, row=5)
 else:
-    DNBTN = Button(window, text="Decrypt Database", command=decrypt)
+    DNBTN = Button(tab1, text="Decrypt Database", command=decrypt)
     DNBTN.grid(column=3, row=5)
 
 lbl5 = Label(tab2, text="Log events:")
