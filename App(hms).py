@@ -23,11 +23,11 @@ app = Flask(__name__)
 
 global cryptokey
 cryptokey = b'W\xdf\xfb\x1dn\xc0\xd3\xe1\xce/\x08P\xe6P\rS\xe7\x07\xa6\xebyHwN,P\x0c\x08\x88\xd8\x9e\xda'
-file = 'Hotel(new).db'
+file = 'Hotel.db'
 buffer_size = 65536
 
-#==========================================================================
-#============decrypt here=============
+# ==========================================================================
+# ============decrypt here=============
 def decrypt(file):
     input_file = open(file, 'rb')
     output_file = open(file + '(decrypted)', 'wb')
@@ -80,8 +80,8 @@ def encrypt(file):
     output_file.close()
     conn.close()
     os.remove(file)
-    os.rename(file + '(encrypted)',file)
-    #=========count============
+    os.rename(file + '(encrypted)', file)
+    # =========count============
     countfile = open("cryptocount.txt", "r")
     count = int(countfile.read())
     countfile.close()
@@ -89,7 +89,7 @@ def encrypt(file):
     countfile = open("cryptocount.txt", "w")
     countfile.write(str(count))
     countfile.close()
-#==================================================================
+# ==================================================================
 decrypt("Hotel.db")
 
 ALPHABET = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
