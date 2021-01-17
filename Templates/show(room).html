@@ -1,0 +1,194 @@
+    {% extends "base.html" %}
+    {% block title %}ProjSync - Public Projects{% endblock %}
+    {% block content %}
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <main>
+
+        <!-- Hero Area Start -->
+        <div class="hero-area hero-height2 d-flex align-items-center" data-background="{{ url_for('static',filename='img/hero/h2_hero.jpg') }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center pt-50">
+                            <h2 id="test">Rooms</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-gallery-area section-padding2">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+
+                        <div class="portfolio-wrapper mb-30">
+
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list1.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list1.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="portfolio-wrapper mb-30">
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list2.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list2.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="portfolio-wrapper mb-30">
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list3.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list3.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="portfolio-wrapper mb-30">
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list4.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list4.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="portfolio-wrapper mb-30">
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list5.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list5.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="portfolio-wrapper mb-30">
+                            <div class="portfolio-thumb small-img"  style="background-image: url({{ url_for('static',filename='img/gallery/project_list2.png') }});">
+                            </div>
+                            <!-- Popup img Link -->
+                            <div class="portfolio-content">
+                                <a href="assets/img/gallery/project_list2.png" class="img-pop-up">View Room</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Project Gallery End -->
+
+        <!-- Want To Work Start -->
+        <div class="wantToWork-area wantToWork-area2 w-padding2">
+            <div class="container">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-xl-8 col-lg-8 col-md-8">
+                        <div class="wantToWork-caption wantToWork-caption2">
+                            <h2>Send us a message if you have an issue with your order.</h2>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4">
+                        <a href="#" class="btn btn-black f-right">contact us now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Want To Work End -->
+
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area">
+            <div class="container">
+               <div class="footer-top footer-padding">
+                    <div class="row justify-content-between">
+                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="single-footer-caption mb-30">
+                                    <!-- logo -->
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Services</h4>
+                                    <ul>
+                                        <li><a href="#">Marketing</a></li>
+                                        <li><a href="#"> SEO Service</a></li>
+                                        <li><a href="#">Digital market</a></li>
+                                        <li><a href="#">Content create</a></li>
+                                        <li><a href="#">Find Us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4>Customer Care</h4>
+                                    <ul>
+                                        <li><a href="#">Contact Us</a></li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="#">News & Articles</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#"> Terms of Use</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                            <div class="single-footer-caption mb-50">
+                                <div class="footer-tittle">
+                                    <h4><span>+564</span> 7885 3222</h4>
+                                    <ul>
+                                        <li><a href="#">youremail@gmail.com</a></li>
+                                    </ul>
+                                    <p>123 East 26th Street, Fifth Floor, New York, NY 10011</p>
+                                </div>
+                                <!-- footer social -->
+                                <div class="footer-social">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fas fa-globe"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+                <div class="footer-bottom">
+                    <div class="row">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+    <!-- Scroll Up -->
+    <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
+{% endblock %}

@@ -64,3 +64,11 @@ def encrypt(file):
     countfile = open("cryptocount.txt", "w")
     countfile.write(str(count))
     countfile.close()
+
+#    #replace replacement\/
+#     X = string
+#     Y = number of repetitions
+#     replace(substr(quote(zeroblob((Y + 1) / 2)), 3, Y), '0', X)
+#     select all the fields by name(not *) to change 1 or 2
+#     substr(column, - x, x) to get last x chars
+#    c.execute("SELECT u_id, replace(substr(quote(zeroblob((length(u_email) - 11) / 2)), 3, length(u_email)-12), '0', 'X') || substr(u_email, - 12, 12), u_username, u_password, 'XXXX XXXX XXXX ' || substr(u_credit_card, - 4, 4) FROM user;") #proof of concept

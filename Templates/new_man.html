@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}ProjSync - New Project Creation Wizard{% endblock %}
+{% block content %}
+{% from "includes/_formhelper.html" import render_field %}
+<!-- Hero Area Start -->
+<div class="hero-area hero-height2 d-flex align-items-center" data-background="{{ url_for('static',filename='img/hero/h2_hero.jpg') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="hero-cap text-center pt-50">
+                    <h2>Project Creation Wizard</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero Area End -->
+<form method="POST" style="padding:5px;">
+    <a href="/projects" style="padding:5px;float:left;"></a>
+    <h1 class="display-4">Create Project</h1>
+    <div class="form-group">
+        {{ render_field(form.name, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.age, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.gender, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.department, class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.password, class="form-control") }}
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+</form>
+{% endblock %}

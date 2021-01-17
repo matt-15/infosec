@@ -10,14 +10,14 @@ class RegisterUserForm(Form):
     cc = StringField('Credit Card', [validators.Length(min=14,max=16), validators.DataRequired()])
     num = StringField('Phone Number', [validators.Length(min=5,max=20), validators.DataRequired()])
 
-class CreateProjectForm(Form):
+class new_man(Form):
     name = StringField('Name', [validators.Length(min=1,max=70), validators.DataRequired()])
-    field = StringField('Field', [validators.Length(min=1,max=70), validators.DataRequired()])
-    description = StringField('Description', [validators.Length(min=1,max=70), validators.DataRequired()])
-    content = StringField('Content', [validators.Length(min=1,max=30000), validators.DataRequired()])
-    view = StringField('View', [validators.Length(min=1,max=17), validators.DataRequired()])
-    pSubmit = SubmitField('Edit')
-
+    salary = StringField('salary', [validators.Length(min=1,max=70)])
+    age = StringField('age', [validators.Length(min=1,max=70)])
+    gender = StringField('gender', [validators.Length(min=1,max=30000)])
+    department = StringField('department', [validators.Length(min=1,max=17), validators.DataRequired()])
+    password = StringField('password', [validators.Length(min=1,max=70)])
+    submit = SubmitField("Add")
 class CreateComment(Form):
     comment = StringField('Comment', [validators.Length(max=70)])
     cSubmit = SubmitField('Post')

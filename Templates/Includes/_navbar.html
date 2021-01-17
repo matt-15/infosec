@@ -18,8 +18,9 @@
                                         <ul id="navigation">
                                             {% if session['logged_in'] == 1 %}
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
-                                            <li><a href="/show">Projects</a></li>
+                                            <li><a href="/manager">Manager</a></li>
+                                            <li><a href="/guest">Guest</a></li>
+                                            <li><a href="/room">Rooms</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -32,8 +33,8 @@
                             {% endif %}
                             {% if session['logged_in'] == 2 %}
                                             <li><a href="/">Home</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
-                                            <li><a href="/clientprojects">Client Projects</a></li>
+                                            <li><a href="/manager">Manager</a></li>
+                                            <li><a href="/guest">Guest</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -44,9 +45,8 @@
                                 </div>
                             </div>
                             {% endif %}
-                            {% if not session['logged_in'] == 1 %}
-                            <li><a href="/">Home</a></li>
-                                            <li><a href="/pricing">Pricing</a></li>
+                            {% if not session['logged_in'] == 1 and not session['logged_in'] == 2%}
+                                            <li><a href="/">Home</a></li>
                                         </ul>
                                     </nav>
                                 </div>

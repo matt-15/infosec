@@ -3,7 +3,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-from Forms import RegisterUserForm, CreateProjectForm, SearchForm, CreateComment
+from Forms import RegisterUserForm, SearchForm, CreateComment, new_man
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import re
 from passlib.hash import pbkdf2_sha256
@@ -12,15 +12,10 @@ import datetime
 from log import log
 import logging
 import random
-import atexit
-from Crypto.Cipher import AES
-from Crypto.Random import get_random_bytes
 logonly = logging.getLogger('werkzeug')
 logonly.setLevel(logging.ERROR)
 app = Flask(__name__)
 from encrypt import encrypt, decrypt
-
-decrypt("Hotel.db")
 
 ALPHABET = [" ","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 # Set the ALPHABET array (containing a space on position 0) and the OTP array to empty
@@ -37,7 +32,10 @@ def generatekey():
         stringOTP += OTP[i]
 
     return stringOTP.lower()
-
+try:
+    decrypt("Hotel.db")
+except Exception:
+    pass
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = r'sqlite:///Hotel.db'
 kyt = generatekey()
@@ -53,7 +51,6 @@ limiter = Limiter(
 
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 db = SQLAlchemy(app)
 
 ##For email unique=True
@@ -63,7 +60,6 @@ db = SQLAlchemy(app)
 ##    u_username = db.Column(db.Text(35))
 ##    u_password = db.Column(db.Text(200)) #200 is for encryption
 ##    u_credit_card = db.Column(db.Text(16))
-
 
 class Guest(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -77,10 +73,15 @@ class Guest(UserMixin, db.Model):
     g_credit_card = db.Column(db.Text(16))
     g_deposit = db.Column(db.Integer)
     room = db.relationship('Room')
-
+    
 @login_manager.user_loader
-def load_user(g_id):
-    return Guest.query.get(int(g_id))
+def load_user(id):
+    print("FILE DECRYPTED_________________2")
+    decrypt("Hotel.db")
+    out =  int(id)
+    db.session.close()
+    encrypt("Hotel.db")
+    return out
 class Room(db.Model):
     r_id = db.Column(db.Integer, primary_key=True)
     r_checkstatus = db.Column(db.Text(25))
@@ -115,7 +116,6 @@ class Employee(db.Model):
     e_job = db.Column(db.Text(25))
     e_name = db.Column(db.Text(25))
     e_department = db.Column(db.Text(25))
-    driver = db.relationship('Driver')
 class Manager(db.Model):
     m_id = db.Column(db.Integer, primary_key=True)
     m_name = db.Column(db.Text(25))
@@ -135,13 +135,8 @@ class PickUpCar(db.Model):
 
 
 db.create_all()
-conn = sqlite3.connect('Hotel.db')
-c = conn.cursor()
+encrypt("Hotel.db")
 
-def OnExitApp():  #encrypt function
-    encrypt("Hotel.db")
-
-atexit.register(OnExitApp)
 
 @app.route('/')
 def index():
@@ -162,7 +157,6 @@ def register():
     with open('./BannedPasswords/banned-passwords-1.txt', 'r') as BannedPassList:
         found = False
         if request.method == 'POST' and RegisterUser.validate():
-
             for line in BannedPassList:
                 if str(RegisterUser.password.data) in line:
                     print("This password is not allowed")
@@ -182,11 +176,14 @@ def register():
                 if logdigit >= 1 and loglower >= 1 and logupper >= 1 and logsymbol >= 1 and len(logpass) >= 8:
                     logpass = pbkdf2_sha256.hash(logpass)
                     user = Guest(g_name=RegisterUser.name.data, g_email=RegisterUser.email.data, g_password=logpass, g_credit_card=RegisterUser.cc.data, g_phone=RegisterUser.num.data)
+                    decrypt("Hotel.db")
                     db.session.add(user)
                     db.session.commit()
                     print("Guest successfully registered")
                     session['logged_in'] = 1
                     login_user(user)
+                    db.session.close()
+                    encrypt("Hotel.db")
                     try:
                         log.reg_new(RegisterUser.name.data)
                     except Exception:
@@ -202,8 +199,6 @@ def register():
 def login():
     ipaddr = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     RegisterUser = RegisterUserForm(request.form)
-    conn = sqlite3.connect('db.sqlite3')
-    c = conn.cursor()
     try:
         if not session['logged_in'] == 0:
             return "User is already logged in please log out first"
@@ -213,51 +208,81 @@ def login():
         logUname = str(RegisterUser.name.data)
         logpass = str(RegisterUser.password.data)
         print(logpass)
+        decrypt("Hotel.db")
         try:
             if db.session.query(Manager.m_id).filter_by(m_name=logUname).first() is not None:
                 user = Manager.query.filter_by(m_name=logUname).first()
                 session['logged_in'] = 2
+                login_user(user)
         except Exception:
             pass
         if db.session.query(Guest.id).filter_by(g_name=logUname).first() is not None:
             user = Guest.query.filter_by(g_name=logUname).first()
             session['logged_in'] = 1
-        print("User successfully logged in as")
-        login_user(user)
+            print("User successfully logged in as Guest")
+            login_user(user)
+        db.session.close()
+        encrypt("Hotel.db")
         return redirect(url_for('index'))
         print("FAILURE")
         return redirect(url_for('login'))    #change redirect to here
     else:
         print('hrub')
-
+        
     return render_template('login.html', form=RegisterUser)
 
 @app.route('/logout')
-@login_required
+#@login_required
 def logout():
     session['logged_in'] = 0
     logout_user()
     print("User logged out")
     return redirect(url_for('index'))
 
-@app.route('/show')
-@login_required
-def projects():
+@app.route('/guest')
+#@login_required
+def guest():
+    decrypt("Hotel.db")
     output = Guest.query.all()
     log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Guest",Guest.query.count())
-    return render_template('show.html',out=output)
+    db.session.close()
+    encrypt("Hotel.db")
+    return render_template('show(guest).html',out=output)
 
-@app.route('/startproject', methods=['GET','POST']) #Not implemented yet, use register user logic, follow the requirements in the Project class~
-@login_required
-def startproject():
+@app.route('/manager')
+#@login_required
+def manager():
+    decrypt("Hotel.db")
+    output = Manager.query.all()
+    log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Manager",Guest.query.count())
+    db.session.close()
+    encrypt("Hotel.db")
+    return render_template('show(man).html',out=output)
+
+@app.route('/room')
+#@login_required
+def room():
+    decrypt("Hotel.db")
+    output = Room.query.all()
+    log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Room",Guest.query.count())
+    db.session.close()
+    encrypt("Hotel.db")
+    return render_template('show(room).html',out=output)
+
+@app.route('/add_manager', methods=['GET','POST']) #Not implemented yet, use register user logic, follow the requirements in the Project class~
+#@login_required
+def new_Man():
     if session['logged_in'] == 1:
-        Proj = CreateProjectForm(request.form) #make sure to clear and check fields are ok before inserting into sql database
-        if request.method == 'POST' and Proj.validate():
-            NewProj = Project(userid=int(session['_user_id']),name=Proj.name.data,field=Proj.field.data,description=Proj.description.data,content=Proj.content.data,view=Proj.view.data)
-            db.session.add(NewProj)
+        man = new_man(request.form) #make sure to clear and check fields are ok before inserting into sql database
+        if request.method == 'POST':
+            decrypt("Hotel.db")
+            NewMan = Manager(m_id=int(session['_user_id']),m_name=man.name.data,m_salary=man.salary.data,m_age=man.age.data,m_gender=man.gender.data,m_department=man.department.data,password=man.password.data)
+            db.session.add(NewMan)
             db.session.commit()
-            return redirect(url_for('projects'))
-        return render_template('startproject.html', form=Proj)
+            db.session.close()
+            encrypt("Hotel.db")
+            return redirect(url_for('manager'))
+        return render_template('new_man.html', form=man)
     else:
         return redirect(url_for('index'))
 
@@ -321,13 +346,7 @@ def editcontent(id):
 ##
 ##@app.route('/select', methods=['GET','POST'])
 ##def select():
-##    #replace replacement\/
-##     X = string
-##     Y = number of repetitions
-##     replace(substr(quote(zeroblob((Y + 1) / 2)), 3, Y), '0', X)
-##     select all the fields by name(not *) to change 1 or 2
-##     substr(column, - x, x) to get last x chars
-##    c.execute("SELECT u_id, replace(substr(quote(zeroblob((length(u_email) - 11) / 2)), 3, length(u_email)-12), '0', 'X') || substr(u_email, - 12, 12), u_username, u_password, 'XXXX XXXX XXXX ' || substr(u_credit_card, - 4, 4) FROM user;") #proof of concept
+##    c.execute('SELECT * FROM user')
 ##    log.dbSelect("User.db","User")
 ##    for row in c.fetchall():
 ##        print(row)
