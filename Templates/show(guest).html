@@ -41,9 +41,9 @@
                                 <tbody>
                                     {% for ids in out %}
                                         {% if session['logged_in'] == 1 %}
-                                            {# if current_user.id == ids.id #}
+                                            {% if currentID|string == ids.id|string %}
                                                 <tr>
-                                                    <td>{{ ids.id }}</td>
+                                                    <td>{{ currentID }}</td>
                                                     <td>{{ ids.g_name }}</td>
                                                     <td>{{ ids.g_email }}</td>
                                                     <td>{{ ids.g_countryname }}</td>
@@ -53,7 +53,7 @@
                                                     <td>{{ "XXXX XXXX XXXX "+ids.g_credit_card[-4:] }}</td>
                                                 </tr>
 
-                                            {# endif #}
+                                            {% endif %}
                                         {% elif session['logged_in'] == 2 %}
                                             <tr>
                                                 <td>{{ ids.id }}</td>

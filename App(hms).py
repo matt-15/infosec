@@ -73,7 +73,7 @@ class Guest(UserMixin, db.Model):
     g_credit_card = db.Column(db.Text(16))
     g_deposit = db.Column(db.Integer)
     room = db.relationship('Room')
-    
+
 @login_manager.user_loader
 def load_user(id):
     print("FILE DECRYPTED_________________2")
@@ -228,7 +228,7 @@ def login():
         return redirect(url_for('login'))    #change redirect to here
     else:
         print('hrub')
-        
+
     return render_template('login.html', form=RegisterUser)
 
 @app.route('/logout')
@@ -242,12 +242,21 @@ def logout():
 @app.route('/guest')
 #@login_required
 def guest():
+    #print(session['_user_id'])
+    try:
+        currentID = session['_user_id']
+        print("id:",session['_user_id'])
+        print("session",session['logged_in'])
+    except KeyError:
+        currentID = -1
+    except Exception as E:
+        print("This happened: ",E)
     decrypt("Hotel.db")
     output = Guest.query.all()
     log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Guest",Guest.query.count())
     db.session.close()
     encrypt("Hotel.db")
-    return render_template('show(guest).html',out=output)
+    return render_template('show(guest).html',out=output, currentID = currentID)
 
 @app.route('/manager')
 #@login_required
