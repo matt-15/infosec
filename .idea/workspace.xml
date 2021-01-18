@@ -4,11 +4,11 @@
     <list default="true" id="d2c8426f-f57a-42b3-884b-1eb15b11fdd4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App(hms).py" beforeDir="false" afterPath="$PROJECT_DIR$/App(hms).py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/Forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Hotel.db" beforeDir="false" afterPath="$PROJECT_DIR$/Hotel.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Templates/Includes/_navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/Includes/_navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/encrypt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates/show(guest).html" beforeDir="false" afterPath="$PROJECT_DIR$/Templates/show(guest).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cryptocount.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cryptocount.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/logCommits.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log/logCommits.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/token.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/token.pickle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,33 +19,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotel.db">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="87" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotel(new).db">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1496">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Hotel(data).db">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/App(hms).py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3246">
-              <caret line="17" column="12" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="12" />
+            <state relative-caret-position="222">
+              <caret line="257" column="11" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="11" />
               <folding>
                 <element signature="e#0#92#0" expanded="true" />
               </folding>
@@ -54,17 +31,51 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/token.pickle">
+        <entry file="file://$PROJECT_DIR$/combolist.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/show(guest).html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/show(man).html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-459" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cryptocount.txt">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/encrypt.py">
+        <entry file="file://$PROJECT_DIR$/Templates/register.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1139">
-              <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+            <state relative-caret-position="-119" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Templates/new_man.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="n#form#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -73,8 +84,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+            <state relative-caret-position="255">
+              <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -82,10 +93,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Classes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
+            <state relative-caret-position="374">
               <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
               <folding>
                 <element signature="e#0#73#0" expanded="true" />
@@ -97,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
+            <state relative-caret-position="85">
+              <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -116,9 +127,13 @@
     <findStrings>
       <find>backup</find>
       <find>file</find>
-      <find>open</find>
       <find>'Hotel.db'</find>
       <find>crypt</find>
+      <find>fetchall</find>
+      <find>show</find>
+      <find>open</find>
+      <find>hotel.db</find>
+      <find>sess</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -135,6 +150,7 @@
         <option value="$PROJECT_DIR$/App(hms).py" />
         <option value="$PROJECT_DIR$/encrypt.py" />
         <option value="$PROJECT_DIR$/../../matadd/App(hms).py" />
+        <option value="$PROJECT_DIR$/Templates/show(guest).html" />
       </list>
     </option>
   </component>
@@ -149,7 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -157,10 +172,16 @@
               <item name="project from sean" type="b2602c69:ProjectViewProjectNode" />
               <item name="project from sean" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="project from sean" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project from sean" type="462c0819:PsiDirectoryNode" />
+              <item name="Templates" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -267,8 +288,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.App(hms)" />
-        <item itemvalue="Python.App(hms) (1)" />
         <item itemvalue="Python.Application" />
+        <item itemvalue="Python.App(hms) (1)" />
         <item itemvalue="Python.count test" />
       </list>
     </recent_temporary>
@@ -318,7 +339,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hotel.db(encrypted)" />
     <entry file="file://$PROJECT_DIR$/2021-1-14_13-42-21.db" />
     <entry file="file://$PROJECT_DIR$/2021-1-14_13-44-37.db" />
     <entry file="file://$PROJECT_DIR$/2021-1-13_11-52-9.db" />
@@ -356,48 +376,6 @@
     <entry file="file://$PROJECT_DIR$/hashcheck.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/combolist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cryptocount.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotel(original).db">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotel(new).db">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1496">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Hotel(data).db">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/token.pickle">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../matadd/App(hms).py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -408,56 +386,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Forms.py">
+    <entry file="file://$PROJECT_DIR$/../Forms.py" />
+    <entry file="file://$PROJECT_DIR$/token.pickle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotel.db(decrypted)">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="4059" lean-forward="true" selection-start-line="15" selection-start-column="4059" selection-end-line="15" selection-end-column="4059" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Forms.py">
+    <entry file="file://$PROJECT_DIR$/Hotel.db(encrypted)">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pip.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotel(original).db">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotel(new).db">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="584">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Hotel.db">
+    <entry file="file://$PROJECT_DIR$/Hotel(data).db">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="87" selection-start-line="17" selection-start-column="87" selection-end-line="17" selection-end-column="87" />
-        </state>
+        <state relative-caret-position="-51" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/encrypt.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1139">
-          <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application.py">
+    <entry file="file://$PROJECT_DIR$/combolist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        <state>
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/new_man.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="n#form#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/App(hms).py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3246">
-          <caret line="17" column="12" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="12" />
+        <state relative-caret-position="222">
+          <caret line="257" column="11" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="11" />
           <folding>
             <element signature="e#0#92#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cryptocount.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Hotel.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="38" lean-forward="true" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="11" lean-forward="true" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/show(guest).html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="51" column="47" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Templates/show(man).html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
           </folding>
         </state>
       </provider>
