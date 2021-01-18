@@ -40,21 +40,34 @@
                                 </thead>
                                 <tbody>
                                     {% for ids in out %}
-                                    <tr>
-                                        <td>{{ ids.id }}</td>
-                                        <td>{{ ids.g_name }}</td>
-                                        <td>{{ ids.g_email }}</td>
-                                        <td>{{ ids.g_countryname }}</td>
-                                        <td>{{ ids.g_roomReserved }}</td>
-                                        <td>{{ ids.g_checkstatus }}</td>
-                                        <td>{{ ids.g_deposit }}</td>
-                                        {% if session['logged_in'] == 2 %}
-                                        <td>{{ ids.g_credit_card }}</td>
-                                        {% else %}
-                                        <td>{{ "XXXX XXXX XXXX "+ids.g_credit_card[-4:] }}</td>
+                                        {% if session['logged_in'] == 1 %}
+                                            {# if current_user.id == ids.id #}
+                                                <tr>
+                                                    <td>{{ ids.id }}</td>
+                                                    <td>{{ ids.g_name }}</td>
+                                                    <td>{{ ids.g_email }}</td>
+                                                    <td>{{ ids.g_countryname }}</td>
+                                                    <td>{{ ids.g_roomReserved }}</td>
+                                                    <td>{{ ids.g_checkstatus }}</td>
+                                                    <td>{{ ids.g_deposit }}</td>
+                                                    <td>{{ "XXXX XXXX XXXX "+ids.g_credit_card[-4:] }}</td>
+                                                </tr>
+
+                                            {# endif #}
+                                        {% elif session['logged_in'] == 2 %}
+                                            <tr>
+                                                <td>{{ ids.id }}</td>
+                                                <td>{{ ids.g_name }}</td>
+                                                <td>{{ ids.g_email }}</td>
+                                                <td>{{ ids.g_countryname }}</td>
+                                                <td>{{ ids.g_roomReserved }}</td>
+                                                <td>{{ ids.g_checkstatus }}</td>
+                                                <td>{{ ids.g_deposit }}</td>
+                                                <td>{{ ids.g_credit_card }}</td>
+                                            </tr>
                                         {% endif %}
-                                    </tr>
                                     {% endfor %}
+
                                 </tbody>
                             </table>
                           </div>
