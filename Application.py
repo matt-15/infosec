@@ -28,12 +28,6 @@ from Crypto.Random import get_random_bytes
 
 SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
 
-
-global cryptokey
-cryptokey = b'W\xdf\xfb\x1dn\xc0\xd3\xe1\xce/\x08P\xe6P\rS\xe7\x07\xa6\xebyHwN,P\x0c\x08\x88\xd8\x9e\xda'
-file = 'Hotel.db'
-buffer_size = 65536
-
 FileIDnamelist = []
 def auth():
     creds = None
@@ -58,7 +52,7 @@ def auth():
 
     # Call the Drive v3 API
     results = service.files().list(
-        pageSize=10, fields="nextPageToken, files(id, name)").execute()
+        pageSize=10, fields="nextPageToken, files(id, name)", q="fullText contains '.db'").execute()
     items = results.get('files', [])
 
     if not items:
@@ -195,12 +189,35 @@ def dwnldbackup():
     dl_recover(file_ID, fileName)
 
 #=====================================================================================
+#====================get key=========
+def dlFile():
+    file_id = '1uEJlqgapyxZCp8wphId8eeY7wAGu67b3'
+    request = service.files().get_media(fileId=file_id)
+    fh = io.FileIO('key.txt', 'w')
+    downloader = MediaIoBaseDownload(fh, request)
+    done = False
+    while done is False:
+        status, done = downloader.next_chunk()
+        print("Download %d%%." % int(status.progress() * 100))
+def generateKey():
+    dlFile()
+    keyfile = open('key.txt',"rb")
+    key = keyfile.readline()
+    key = key.strip()
+    keyfile.close()
+    os.remove('key.txt')
+    return key
+global cryptokey
+cryptokey = generateKey()
+#cryptokey = bytes(cryptokey,"utf-8")
+
+file = 'Hotel.db'
+buffer_size = 65536
 # === Encrypt ===
 def encrypt():
     # Open the input and output files
     input_file = open(file, 'rb')
     output_file = open(file + '(encrypted)', 'wb')
-
     # Create the cipher object and encrypt the data
     cipher_encrypt = AES.new(cryptokey, AES.MODE_CFB)
 
@@ -242,7 +259,6 @@ def decrypt():
     # Open the input and output files
     input_file = open(file, 'rb')
     output_file = open(file + '(decrypted)', 'wb')
-
     # Read in the iv
     iv = input_file.read(16)
 

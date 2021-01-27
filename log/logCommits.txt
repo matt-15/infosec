@@ -116,3 +116,31 @@
 2021-01-18T18:38:37+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
 2021-01-18T18:38:55+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
 2021-01-18T18:39:16+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
+2021-01-19T02:57:22+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
+2021-01-19T02:57:40+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
+2021-01-19T02:57:57+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
+2021-01-27T18:04:37+0800 WARNING file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+Traceback (most recent call last):
+  File "C:\Users\Matthias Chew\Downloads\NYP stuff\year 2\crypto\Practical06\Practical06\MySignature\Application\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 33, in <module>
+    from oauth2client.contrib.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.contrib.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Matthias Chew\Downloads\NYP stuff\year 2\crypto\Practical06\Practical06\MySignature\Application\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 37, in <module>
+    from oauth2client.locked_file import LockedFile
+ModuleNotFoundError: No module named 'oauth2client.locked_file'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Matthias Chew\Downloads\NYP stuff\year 2\crypto\Practical06\Practical06\MySignature\Application\lib\site-packages\googleapiclient\discovery_cache\__init__.py", line 44, in autodetect
+    from . import file_cache
+  File "C:\Users\Matthias Chew\Downloads\NYP stuff\year 2\crypto\Practical06\Practical06\MySignature\Application\lib\site-packages\googleapiclient\discovery_cache\file_cache.py", line 41, in <module>
+    "file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth"
+ImportError: file_cache is unavailable when using oauth2client >= 4.0.0 or google-auth
+2021-01-27T18:04:37+0800 DEBUG URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v3/rest
+2021-01-27T18:04:38+0800 DEBUG URL being requested: GET https://www.googleapis.com/drive/v3/files?pageSize=10&fields=nextPageToken%2C+files%28id%2C+name%29&q=fullText+contains+%27.db%27&alt=json
+2021-01-27T18:04:38+0800 DEBUG URL being requested: GET https://www.googleapis.com/drive/v3/files/1uEJlqgapyxZCp8wphId8eeY7wAGu67b3?alt=media
+2021-01-27T18:05:06+0800 INFO action"SELECT"; databse: "sqlite:///Hotel.db"; table:"Guest"; rows: "2"
