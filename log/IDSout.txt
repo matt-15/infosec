@@ -1,0 +1,4 @@
+Transaction ['2021-01-15T11:55:57+0800', '4', 'SELECT', '10', 'Hotel.db'] is a high level threat (3)
+Transaction ['2021-01-15T11:56:17+0800', '6', 'SELECT', '17', 'Hotel.db'] is a high level threat (3)
+Transaction ['2021-01-15T11:56:47+0800', '7', 'SELECT', '45', 'Hotel.db'] is a high level threat (3)
+Transaction ['2021-01-15T11:57:57+0800', '10', 'SELECT', '900', 'Hotel.db'] is a high level threat (3)

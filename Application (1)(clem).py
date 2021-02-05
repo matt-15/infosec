@@ -10,7 +10,6 @@ import scipy
 from scipy import stats
 import statistics as st
 from combolist import ChecklistCombobox
-import webbrowser
 
 import pickle
 import os.path
@@ -23,11 +22,16 @@ import sqlite3
 import shutil
 import os
 import io
-
 from Crypto.Cipher import AES
 from Crypto.Random import get_random_bytes
 
 SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly']
+
+
+global cryptokey
+cryptokey = b'W\xdf\xfb\x1dn\xc0\xd3\xe1\xce/\x08P\xe6P\rS\xe7\x07\xa6\xebyHwN,P\x0c\x08\x88\xd8\x9e\xda'
+global key
+buffer_size = 65536
 file = ' '
 FileIDnamelist = []
 def auth():
@@ -53,7 +57,7 @@ def auth():
 
     # Call the Drive v3 API
     results = service.files().list(
-        pageSize=10, fields="nextPageToken, files(id, name)", q="fullText contains '.db'").execute()
+        pageSize=10, fields="nextPageToken, files(id, name)").execute()
     items = results.get('files', [])
 
     if not items:
@@ -78,6 +82,7 @@ window = Tk()
 window.title("Application")
 window.geometry('550x350')
 OPTIONS = ["Low","Medium","High"]
+
 
 def backup():
     try:
@@ -109,11 +114,9 @@ def backup():
 
         # ------------------------------------------------------------
         os.remove(file)
-        #decrypt()  #if db was decrypted
+
     except:
         print('No DB active!')
-    
-
 
 
 def uploadFile():
@@ -140,8 +143,9 @@ def update():
     global pathVAR
     pathVAR = PATH.get()
     freqVAR = FREQ.get()
+    sevVAR = SEVList.get()
     timeVAR = TIME1.get()
-    print(pathVAR, freqVAR, timeVAR)  #For debugging, can remove later
+    print(pathVAR, freqVAR, sevVAR, timeVAR)  #For debugging, can remove later
 
     try:
         for x in freqVAR:
@@ -176,8 +180,6 @@ def update_log():
         LOG.configure(state='disabled')
         # Autoscroll to the bottom
         LOG.yview(END)
-def callback(url):
-    webbrowser.open_new(url)
 
 def dwnldbackup():
     specbackVAR = specbackList.get()
@@ -190,35 +192,12 @@ def dwnldbackup():
     dl_recover(file_ID, fileName)
 
 #=====================================================================================
-#====================get key=========
-def dlFile():
-    file_id = '1uEJlqgapyxZCp8wphId8eeY7wAGu67b3'
-    request = service.files().get_media(fileId=file_id)
-    fh = io.FileIO('key.txt', 'w')
-    downloader = MediaIoBaseDownload(fh, request)
-    done = False
-    while done is False:
-        status, done = downloader.next_chunk()
-        print("Download %d%%." % int(status.progress() * 100))
-def generateKey():
-    dlFile()
-    keyfile = open('key.txt',"rb")
-    key = keyfile.readline()
-    key = key.strip()
-    keyfile.close()
-    os.remove('key.txt')
-    return key
-global cryptokey
-cryptokey = generateKey()
-#cryptokey = bytes(cryptokey,"utf-8")
-
-file = 'Hotel.db'
-buffer_size = 65536
 # === Encrypt ===
 def encrypt():
     # Open the input and output files
     input_file = open(file, 'rb')
     output_file = open(file + '(encrypted)', 'wb')
+
     # Create the cipher object and encrypt the data
     cipher_encrypt = AES.new(cryptokey, AES.MODE_CFB)
 
@@ -235,31 +214,13 @@ def encrypt():
     # Close the input and output files
     input_file.close()
     output_file.close()
-    os.remove(file)
-    os.rename(file + '(encrypted)',file)
-    #======================count ====================
-    countfile = open("cryptocount.txt", "r")
-    count = int(countfile.read())
-    countfile.close()
-    count += 1
-    countfile = open("cryptocount.txt", "w")
-    countfile.write(str(count))
-    countfile.close()
-    #====================update=================
-    if count == 1:
-        DNBTN.config(state=NORMAL)
-        ENBTN.config(state=DISABLED)
-    elif count != 0 and count != 1:
-        print("count is",count)
-    else:
-        ENBTN.config(state=NORMAL)
-        DNBTN.config(state=DISABLED)
 
 # === Decrypt ===
 def decrypt():
     # Open the input and output files
-    input_file = open(file, 'rb')
+    input_file = open(file + '(encrypted)', 'rb')
     output_file = open(file + '(decrypted)', 'wb')
+
     # Read in the iv
     iv = input_file.read(16)
 
@@ -278,30 +239,6 @@ def decrypt():
     output_file.close()
     os.remove(file)
     os.rename(file + '(decrypted)',file)
-    #===========count=========
-    countfile = open("cryptocount.txt", "r")
-    count = int(countfile.read())
-    countfile.close()
-    count -= 1
-    countfile = open("cryptocount.txt", "w")
-    countfile.write(str(count))
-    countfile.close()
-    #============update======
-    if count == 0:
-        ENBTN.config(state=NORMAL)
-        DNBTN.config(state=DISABLED)
-    elif count != 0 and count != 1:
-        print("count is",count)
-    else:
-        DNBTN.config(state=NORMAL)
-        ENBTN.config(state=DISABLED)
-    #==========================
-def encryptcheck():
-    countfile = open("cryptocount.txt", "r")
-    count = int(countfile.read())
-    countfile.close()
-    print("encryptcheck count:",count)
-    return count
 #=======================================================================================
 
 tab_parent = ttk.Notebook(window)
@@ -326,6 +263,13 @@ lbl3.grid(column=0,row=3)
 FREQ = ChecklistCombobox(tab1, values=('Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'))
 FREQ.grid(column=1,row=3)
 
+lbl4 = Label(tab1, text="Select IDS strictness")
+lbl4.grid(column=0,row=4)
+SEVList = StringVar(tab1)
+SEVList.set(OPTIONS[0])
+SEV = OptionMenu(tab1, SEVList, *OPTIONS)
+SEV.grid(column=1,row=4)
+
 UpdateBTN = Button(tab1, text="Update", command=update)
 UpdateBTN.grid(column=1, row=5)
 
@@ -340,34 +284,94 @@ specback.grid(column=0,row=6)
 BKNBTN = Button(tab1, text="Backup Now", command=backup)
 BKNBTN.grid( column=1, row=7)
 
-if encryptcheck() == 1:
-    ENBTN = Button(tab1, text="Encrypt Database", command=encrypt, state=DISABLED)
-    ENBTN.grid(column=2, row=5)
-else:
-    ENBTN = Button(tab1, text="Encrypt Database", command=encrypt)
-    ENBTN.grid(column=2, row=5)
-if encryptcheck() == 0:
-    DNBTN = Button(tab1, text="Decrypt Database", command=decrypt, state=DISABLED)
-    DNBTN.grid(column=3, row=5)
-else:
-    DNBTN = Button(tab1, text="Decrypt Database", command=decrypt)
-    DNBTN.grid(column=3, row=5)
+ENBTN = Button(tab1, text="Encrypt Database",)
+ENBTN.grid(column=2, row=7)
+DNBTN = Button(tab1, text="Decrypt Database",)
+DNBTN.grid(column=3, row=7)
 
 lbl5 = Label(tab2, text="Log events:")
 lbl5.grid(column=0,row=0)
-LOG = ScrolledText(tab2,width=100,height=10,wrap=WORD)
+LOG = ScrolledText(tab2,width=100,height=10)
 LOG.grid(column=0,row=1,columnspan=4)
 LOG.configure(state='disabled')
-
 RE = Button(tab2, text="Refresh", command=update_log)
 RE.grid(column=0, row=2)
-splunk = Button(tab2, text="Go see splunk dashboard")
-splunk.grid(column=1, row=2)
-splunk.bind("<Button-1>", lambda e: callback("http://127.0.0.1:8000/en-US/app/search/ispj"))
-##es = Button(tab2, text="Go see ElasticSearch dashboard")
-##es.grid(column=2, row=2)
-##es.bind("<Button-1>", lambda e: callback("http://127.0.0.1:8000/en-US/app/search/ispj"))
 
 PATH.focus()
 window.mainloop()
+
+no_lines = 0
+
+#Output these variables to a log file after the calculation then read from them, if they dont exist then use blank lists temporarily
+row = []
+time_ = []
+action = []
+time_delta = []
+buffer = []
+line_counter = []  #This is the previous ID that was scanned up until
+
+def threat_calculation():
+    no_lines = 0
+    if line_counter[0].isdigit():
+        line_val = line_counter[0]
+        pass
+    else:
+        line_counter[0] = 0
+        line_val = line_counter[0]
+    log_root = open("log.txt")
+    log_read = log_root.readline()
+    line_id = log_root.readline()[0][0]  #latest ID, most recent log
+    for i in log_root:
+        no_lines += 1
+    if no_lines < 10:
+        print("Insufficient datapoints provided, threat calculation will be skipped")
+    else:
+        while line_val <= no_lines:
+            if line_val >= line_id:  #If previous ID = latest ID
+                print("Waiting for log update...")
+                break
+
+            else:  #elif line_val + 1 >= line_id:
+                if len(row) == 0 or len(time_) == 0 or len(action) == 0:
+                    pass
+                else:
+                    row_deviation = st.stdev(row)
+                    row_mean = st.mean(row)
+                    time_delta_deviation = st.stdev(time_delta)
+                    time_delta_mean = st.mean(time_delta)
+
+                    z_row = (log_read[line_val][1] - row_mean) / row_deviation
+                    z_time_delta = (log_read[line_val][4] - time_delta_mean) / time_delta_deviation
+
+                    p_row = abs(50 - (scipy.stats.norm.sf(abs(z_row)) * 100))
+                    p_time_delta = abs(50 - (scipy.stats.norm.sf(abs(z_time_delta)) * 100))
+                    p_action = action.count(log_read[line_val][6]) / len(
+                        action)  # counts said actions in action list divided by total no. of actions
+
+                    row_multi = 1  #Multipliers to be implemented with ML down the road
+                    time_delta_multi = 1
+                    action_multi = 1
+                    threat_score = ((p_row * row_multi) + (p_time_delta * time_delta_multi) + (p_action * action_multi))
+                    if threat_score > 30:
+                        threat_level = 1
+                    elif threat_score > 50:
+                        threat_level = 2
+                    elif threat_score > 70:
+                        threat_level = 3
+                    elif threat_score > 100:
+                        threat_level = 4
+                    else:
+                        threat_level = 5
+
+                    if threat_level == 3:
+                        log = 'it xavier'
+                    elif threat_level == 4:
+                        print("https://www.youtube.com/watch?v=AE4b9jO1uB4&ab_channel=FLOWofficialVEVO")
+
+                line_counter[0] += 1
+                row.append(log_read[line_val][4])  # Replace the numeral with wherever the row position is in the log
+                action.append(log_read[line_val][5])  # Replace the numeral with wherever the row position is in the log
+                time_ = log_read[line_val][6]  # Replace the numeral with wherever the row position is in the log
+                prev_time = log_read[line_val - 1][6]  # Replace the numeral with wherever the row position is in the log
+                time_delta.append(time_ - prev_time)
 

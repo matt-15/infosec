@@ -3,7 +3,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import sqlite3
 from flask_sqlalchemy import SQLAlchemy
-from Forms import RegisterUserForm, SearchForm, CreateComment, new_man
+from Forms import RegisterUserForm, new_man, SearchForm, CreateComment
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 import re
 from passlib.hash import pbkdf2_sha256
@@ -73,7 +73,7 @@ class Guest(UserMixin, db.Model):
     g_credit_card = db.Column(db.Text(16))
     g_deposit = db.Column(db.Integer)
     room = db.relationship('Room')
-
+    
 @login_manager.user_loader
 def load_user(id):
     print("FILE DECRYPTED_________________2")
@@ -178,9 +178,16 @@ def register():
                     user = Guest(g_name=RegisterUser.name.data, g_email=RegisterUser.email.data, g_password=logpass, g_credit_card=RegisterUser.cc.data, g_phone=RegisterUser.num.data)
                     decrypt("Hotel.db")
                     db.session.add(user)
+                    log.dbInsert(app.config['SQLALCHEMY_DATABASE_URI'],"Guest",RegisterUser.email.data, RegisterUser.name.data, str(RegisterUser.cc.data)[-4:0], "1")
                     db.session.commit()
+                    log.dbCommit(app.config['SQLALCHEMY_DATABASE_URI'],"Guest","1")
+                    try:
+                        log.reg_new(RegisterUser.username.data)
+                    except Exception:
+                        print("Error occurred while logging Registering new guest.")
                     print("Guest successfully registered")
                     session['logged_in'] = 1
+                    session['user'] = RegisterUser.name.data
                     login_user(user)
                     db.session.close()
                     encrypt("Hotel.db")
@@ -209,32 +216,39 @@ def login():
         logpass = str(RegisterUser.password.data)
         print(logpass)
         decrypt("Hotel.db")
-        try:
-            if db.session.query(Manager.m_id).filter_by(m_name=logUname).first() is not None:
-                user = Manager.query.filter_by(m_name=logUname).first()
-                session['logged_in'] = 2
-                login_user(user)
-        except Exception:
-            pass
-        if db.session.query(Guest.id).filter_by(g_name=logUname).first() is not None:
+        if db.session.query(Manager.m_id).filter_by(m_name=logUname).first() is not None:
+            user = Manager.query.filter_by(m_name=logUname).first()
+            session['logged_in'] = 2
+            login_user(user)
+        elif db.session.query(Guest.id).filter_by(g_name=logUname).first() is not None:
             user = Guest.query.filter_by(g_name=logUname).first()
             session['logged_in'] = 1
             print("User successfully logged in as Guest")
             login_user(user)
-        db.session.close()
-        encrypt("Hotel.db")
-        return redirect(url_for('index'))
-        print("FAILURE")
-        return redirect(url_for('login'))    #change redirect to here
+
+        if 'logged_in' in session and session['logged_in'] != 0:
+            log.loginp(logUname)
+            db.session.close()
+            encrypt("Hotel.db")
+            session['user'] = logUname
+            return redirect(url_for('index'))
+        else:
+            print("FAILURE")
+            log.loginf(logUname)
+            db.session.close()
+            encrypt("Hotel.db")
+            return redirect(url_for('login'))    #change redirect to here
     else:
         print('hrub')
-
+        
     return render_template('login.html', form=RegisterUser)
 
 @app.route('/logout')
 #@login_required
 def logout():
+    print("OUTT", session['user'])
     session['logged_in'] = 0
+    log.logino(session['user'])
     logout_user()
     print("User logged out")
     return redirect(url_for('index'))
@@ -266,14 +280,14 @@ def manager():
     log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Manager",Guest.query.count())
     db.session.close()
     encrypt("Hotel.db")
-    return render_template('show(man).html',out=output)
+    return render_template('show(man).html',out=output, currentID = currentID)
 
 @app.route('/room')
 #@login_required
 def room():
     decrypt("Hotel.db")
     output = Room.query.all()
-    log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Room",Guest.query.count())
+    log.dbSelect(app.config['SQLALCHEMY_DATABASE_URI'],"Room",Room.query.count())
     db.session.close()
     encrypt("Hotel.db")
     return render_template('show(room).html',out=output)
